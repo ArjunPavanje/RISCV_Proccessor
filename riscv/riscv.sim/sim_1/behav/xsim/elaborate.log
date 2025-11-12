@@ -1,44 +1,50 @@
 Vivado Simulator v2025.1.0
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
-Running: /home/agamubuntu/Xilinx/2025.1/Vivado/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_4_11 -L xbip_utils_v3_0_14 -L axi_utils_v2_0_10 -L xbip_pipe_v3_0_10 -L xbip_dsp48_wrapper_v3_0_7 -L mult_gen_v12_0_23 -L floating_point_v7_0_25 -L div_gen_v5_1_24 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot core_tb_behav xil_defaultlib.core_tb xil_defaultlib.glbl -log elaborate.log 
+Running: /home/llamag1ama/Xilinx/2025.1/Vivado/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L blk_mem_gen_v8_4_11 -L xbip_utils_v3_0_14 -L axi_utils_v2_0_10 -L xbip_pipe_v3_0_10 -L xbip_dsp48_wrapper_v3_0_7 -L mult_gen_v12_0_23 -L floating_point_v7_0_25 -L div_gen_v5_1_24 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot core_tb_behav xil_defaultlib.core_tb xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 WARNING: [XSIM 43-3431] One or more environment variables have been detected which affect the operation of the C compiler. These are typically not set in standard installations and are not tested by AMD, however they may be appropriate for your system, so the flow will attempt to continue.  If errors occur, try running xelab with the "-mt off -v 1" switches to see more information from the C compiler. The following environment variables have been detected:
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:101]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:102]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:108]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:109]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:139]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:140]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:146]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:147]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:153]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:154]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:174]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:175]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:181]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:182]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/FPSub.v:13]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:188]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:189]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:195]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:196]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:202]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/FSQRT.v:24]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:233]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:234]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:240]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:241]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:247]
-WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/agamubuntu/Github/processor/core/fpu/fpu.v:248]
-WARNING: [VRFC 10-9543] actual bit length 1 differs from formal bit length 4 for port 'wea' [/home/agamubuntu/Github/processor/core/data_mem_unit/data_mem_unit.v:66]
-WARNING: [VRFC 10-9543] actual bit length 17 differs from formal bit length 12 for port 'addra' [/home/agamubuntu/Github/processor/core/data_mem_unit/data_mem_unit.v:67]
-WARNING: [VRFC 10-9543] actual bit length 8 differs from formal bit length 32 for port 'dina' [/home/agamubuntu/Github/processor/core/data_mem_unit/data_mem_unit.v:68]
-WARNING: [VRFC 10-9543] actual bit length 8 differs from formal bit length 32 for port 'douta' [/home/agamubuntu/Github/processor/core/data_mem_unit/data_mem_unit.v:69]
-WARNING: [VRFC 10-5021] port 'm_axis_dout_tvalid' is not connected on this instance [/home/agamubuntu/Github/processor/core/alu/div.v:77]
-WARNING: [VRFC 10-5021] port 'm_axis_dout_tvalid' is not connected on this instance [/home/agamubuntu/Github/processor/core/alu/div.v:89]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:107]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:108]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:114]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:115]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:145]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:146]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:152]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:153]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:159]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:160]
+WARNING: [VRFC 10-9543] actual bit length 1 differs from formal bit length 64 for port 'out' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:169]
+WARNING: [VRFC 10-9543] actual bit length 1 differs from formal bit length 64 for port 'out' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:175]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:180]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:181]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:187]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:188]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/FPSub.v:13]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:194]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:195]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:201]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:202]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:208]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/FSQRT.v:25]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:239]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:240]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:246]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:247]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:253]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in2' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:254]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:274]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:280]
+WARNING: [VRFC 10-9543] actual bit length 8 differs from formal bit length 11 for port 'index' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/FCVT_fp.v:30]
+WARNING: [VRFC 10-9543] actual bit length 64 differs from formal bit length 32 for port 'in1' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/fpu/fpu.v:286]
+WARNING: [VRFC 10-9543] actual bit length 1 differs from formal bit length 4 for port 'wea' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/data_mem_unit/data_mem_unit.v:66]
+WARNING: [VRFC 10-9543] actual bit length 17 differs from formal bit length 12 for port 'addra' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/data_mem_unit/data_mem_unit.v:67]
+WARNING: [VRFC 10-9543] actual bit length 8 differs from formal bit length 32 for port 'dina' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/data_mem_unit/data_mem_unit.v:68]
+WARNING: [VRFC 10-9543] actual bit length 8 differs from formal bit length 32 for port 'douta' [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/data_mem_unit/data_mem_unit.v:69]
+WARNING: [VRFC 10-5021] port 'm_axis_dout_tvalid' is not connected on this instance [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/alu/div.v:77]
+WARNING: [VRFC 10-5021] port 'm_axis_dout_tvalid' is not connected on this instance [/home/llamag1ama/Documents/Github/RISCV_Proccessor/core/alu/div.v:89]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis
@@ -308,10 +314,17 @@ Compiling module xil_defaultlib.FPDiv(BUS_WIDTH=32)
 Compiling module xil_defaultlib.quake3(BUS_WIDTH=32)
 Compiling module xil_defaultlib.FSQRT(BUS_WIDTH=32)
 Compiling module xil_defaultlib.FSGNJ_default
+Compiling module xil_defaultlib.FSGNJN_default
 Compiling module xil_defaultlib.FSGNJX_default
 Compiling module xil_defaultlib.FSGNJ(BUS_WIDTH=32)
+Compiling module xil_defaultlib.FSGNJN(BUS_WIDTH=32)
 Compiling module xil_defaultlib.FSGNJX(BUS_WIDTH=32)
-Compiling module xil_defaultlib.fpu
+Compiling module xil_defaultlib.FCVT_int(BUS_WIDTH=32)
+Compiling module xil_defaultlib.leading_1(BUS_WIDTH=32)
+Compiling module xil_defaultlib.FCVT_fp(BUS_WIDTH=32)
+Compiling module xil_defaultlib.FCVT_S_D_default
+Compiling module xil_defaultlib.FCVT_D_S_default
+Compiling module xil_defaultlib.fpu_default
 Compiling module xil_defaultlib.ex_stage
 Compiling module xil_defaultlib.ex_mem_reg
 Compiling module xil_defaultlib.data_mem_control

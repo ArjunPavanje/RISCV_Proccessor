@@ -103,12 +103,16 @@ module FPDiv #(
   wire is_inf_1 = (E_1 == IS_INFINITY) && ~(|M_1);
   wire is_inf_2 = (E_2 == IS_INFINITY) && ~(|M_2);
 
+  wire is_nan_1 = (E_1 == IS_INFINITY) && (|M_1);
+  wire is_nan_2 = (E_2 == IS_INFINITY) && (|M_2);
 
+  wire is_zero_1 = ~|in1[MANTISSA_SIZE-2:0];
+  wire is_zero_2 = ~|in2[MANTISSA_SIZE-2:0];
   //wire is_inf = ((is_inf_1 | is_inf_2) & !is_NaN) | exp_overflow;
 
 
   //wire is_NaN = (is_inf_1 & is_inf_2);
-  wire is_NaN = (is_inf_1 & is_inf_2) | (~(|E_1) & ~(|E_2));
+  wire is_NaN = (~is_nan_1 & ~is_inf_1 & is_zero_2) | (is_zero_1 & is_zero_2) | (is_inf_1 & is_inf_2) | (~(|E_1) & ~(|E_2)) | (is_nan_1 | is_nan_2);
 
 
   //wire is_inf = ~is_NaN & ((is_inf_1 | (|M_2)) | exp_overflow);
@@ -121,7 +125,7 @@ module FPDiv #(
   //wire is_zero = ~is_NaN & (is_inf_2 | (|M_1) | exp_underflow);
 
   //wire is_zero = ~is_NaN & (~(|N1[62:0]) | exp_underflow);
-  wire is_zero = ~is_NaN & (~(|in1[BUS_WIDTH-2:0]) & (|in2[BUS_WIDTH-2:0]));
+  wire is_zero = (~is_nan_1 & ~is_inf_1 & is_inf_2) | (~is_NaN & (~(|in1[BUS_WIDTH-2:0]) & (|in2[BUS_WIDTH-2:0])));
   //(~(|E_1)) | (~(|E_2)) | exp_underflow;
 
 

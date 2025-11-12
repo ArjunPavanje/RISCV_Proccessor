@@ -92,13 +92,17 @@ module FPMul #(
   wire is_inf_1 = (E_1 == IS_INFINITY) && ~(|M_1);
   wire is_inf_2 = (E_2 == IS_INFINITY) && ~(|M_2);
 
+  wire is_nan_1 = (E_1 == IS_INFINITY) && (|M_1);
+  wire is_nan_2 = (E_2 == IS_INFINITY) && (|M_2);
 
-  wire is_inf = ((is_inf_1 | is_inf_2) & !is_NaN) | exp_overflow;
-  wire is_NaN = (is_inf_1 & |E_2) | (is_inf_2 & |E_1);  // 0 * infinity
+  wire is_zero_1 = ~|in1[MANTISSA_SIZE-2:0];
+  wire is_zero_2 = ~|in2[MANTISSA_SIZE-2:0];
+
+  wire is_NaN = is_nan_1 | is_nan_2;
+  wire is_inf = ((is_inf_1 | is_inf_2) & ~is_NaN) | exp_overflow;
 
   // Checking for multiplication by 0
-  wire is_zero = (~(|E_1)) | (~(|E_2)) | exp_underflow;
-
+  wire is_zero = (is_zero_1 | is_zero_2)&(~is_NaN)&(~is_inf);
 
   wire [BUS_WIDTH-1:0] out_1 = {S_1 ^ S_2, exponent_4[EXPONENT_SIZE-1:0], mantissa_renormalized};
 
@@ -108,7 +112,7 @@ module FPMul #(
   //{S_1 ^ S_2, 11'h7FF, 52'h0};
 
 
-  assign out = (is_zero) ? (ZERO) : ((is_NaN) ? (out_2) : ((is_inf) ? (out_3) : (out_1)));
+  assign out = ((is_zero) ? (ZERO) : ((is_NaN) ? (out_2) : ((is_inf) ? (out_3) : (out_1))));
 
   /*
   // Final exponent and mantissa values

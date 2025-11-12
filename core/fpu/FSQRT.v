@@ -11,6 +11,7 @@ module FSQRT #(
   localparam BIAS = (BUS_WIDTH == 64) ? 1023 : 127;
 
   localparam ONE = (BUS_WIDTH == 64) ? 64'h3ff0000000000000 : 32'h3f800000;
+  localparam IS_INFINITY = (BUS_WIDTH == 64) ? 11'h7FF : 8'hFF;
   localparam NAN = (BUS_WIDTH == 64) ? 64'h7ff8000000000000 : 32'h7fc00000;
   localparam INFINITY_P = (BUS_WIDTH == 64) ? 64'h7ff0000000000000 : 32'h7f800000;
   localparam INFINITY_N = (BUS_WIDTH == 64) ? 64'hfff0000000000000 : 32'hff800000;
@@ -34,8 +35,11 @@ module FSQRT #(
   wire is_underflow = ~(|y_1[BUS_WIDTH-2:MANTISSA_SIZE]) & (|y_1[MANTISSA_SIZE-1:0]);
   wire is_inf = (in1 == INFINITY_P);
   wire is_zero = ~(|in1[BUS_WIDTH-2:0]) | is_underflow;
-  wire is_neg = in1[BUS_WIDTH-1];
+  wire is_neg = in1[BUS_WIDTH-1]; 
 
-  assign out = (is_neg) ? (NAN) : (is_zero ? (ZERO) : (is_inf ? (INFINITY_P) : (y_1)));
+  wire [EXPONENT_SIZE-1:0] E_A = in1[BUS_WIDTH-2:MANTISSA_SIZE];
+  wire [MANTISSA_SIZE-1:0] M_A = in1[MANTISSA_SIZE-1:0];
+  wire is_nan_A = (E_A == IS_INFINITY) && (M_A);
+  assign out = (is_neg | is_nan_A) ? (NAN) : (is_zero ? (ZERO) : (is_inf ? (INFINITY_P) : (y_1)));
 
 endmodule

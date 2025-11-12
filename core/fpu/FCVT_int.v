@@ -49,7 +49,7 @@ module FCVT_int #(
   wire is_inf = (E == IS_INFINITY) & (~|M);
   wire is_NaN = (E == IS_INFINITY) & (|M);
   wire is_zero = (~|E) & (~|M);
-
-  assign out = (is_NaN)?(ZERO):((is_zero)?(ZERO):((is_inf) ? (overflow) : ((too_large) ? (overflow) : (S ? (~num + ONE) : num))));
+  wire [BUS_WIDTH-1:0] nan_res = (in1[BUS_WIDTH-1]) ? (MAX_INT_N) : (MAX_INT_P);
+  assign out = (is_NaN)?(nan_res):((is_zero)?(ZERO):((is_inf) ? (overflow) : ((too_large) ? (overflow) : (S ? (~num + ONE) : num))));
 
 endmodule

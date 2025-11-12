@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="215.001 ns"></ZoomEndTime>
-      <Cursor1Time time="75.398 ns"></Cursor1Time>
+      <ZoomStartTime time="986.566 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,500.687 ns"></ZoomEndTime>
+      <Cursor1Time time="1,263.588 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="200"></NameColumnWidth>
-      <ValueColumnWidth column_width="146"></ValueColumnWidth>
+      <NameColumnWidth column_width="139"></NameColumnWidth>
+      <ValueColumnWidth column_width="159"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="35" />
+   <WVObjectSize size="52" />
    <wvobject type="logic" fp_name="/core_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -112,10 +112,6 @@
       <obj_property name="ElementShortName">instr[31:0]</obj_property>
       <obj_property name="ObjectShortName">instr[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/fpu_cntrl_instance/fpu_op">
-      <obj_property name="ElementShortName">fpu_op[5:0]</obj_property>
-      <obj_property name="ObjectShortName">fpu_op[5:0]</obj_property>
-   </wvobject>
    <wvobject type="logic" fp_name="/core_tb/dut/id_stage_instance/fpu_cntrl_instance/fpu_rs1">
       <obj_property name="ElementShortName">fpu_rs1</obj_property>
       <obj_property name="ObjectShortName">fpu_rs1</obj_property>
@@ -159,5 +155,77 @@
    <wvobject type="array" fp_name="/core_tb/dut/ex_stage_instance/fpu_instance/out">
       <obj_property name="ElementShortName">out[63:0]</obj_property>
       <obj_property name="ObjectShortName">out[63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[41]">
+      <obj_property name="ElementShortName">[41][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[41][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[40]">
+      <obj_property name="ElementShortName">[40][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[40][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[39]">
+      <obj_property name="ElementShortName">[39][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[39][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[38]">
+      <obj_property name="ElementShortName">[38][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[38][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[37]">
+      <obj_property name="ElementShortName">[37][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[37][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[36]">
+      <obj_property name="ElementShortName">[36][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[36][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[35]">
+      <obj_property name="ElementShortName">[35][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[35][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[34]">
+      <obj_property name="ElementShortName">[34][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[34][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[33]">
+      <obj_property name="ElementShortName">[33][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[33][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[50]">
+      <obj_property name="ElementShortName">[50][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[50][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[49]">
+      <obj_property name="ElementShortName">[49][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[49][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[48]">
+      <obj_property name="ElementShortName">[48][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[48][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[47]">
+      <obj_property name="ElementShortName">[47][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[47][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[46]">
+      <obj_property name="ElementShortName">[46][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[46][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[45]">
+      <obj_property name="ElementShortName">[45][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[45][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[44]">
+      <obj_property name="ElementShortName">[44][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[44][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[43]">
+      <obj_property name="ElementShortName">[43][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[43][63:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/core_tb/dut/id_stage_instance/regfile_instance/reg_array[42]">
+      <obj_property name="ElementShortName">[42][63:0]</obj_property>
+      <obj_property name="ObjectShortName">[42][63:0]</obj_property>
    </wvobject>
 </wave_config>

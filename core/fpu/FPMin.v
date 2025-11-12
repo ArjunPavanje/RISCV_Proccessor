@@ -41,13 +41,13 @@ module FPMin #(
       .in2(in2),
       .out(max)
   );
-  wire [BUS_WIDTH-1:0] result_normal = (max == in1) ? in2 : in1;
+  wire [BUS_WIDTH-1:0] min_normal = (max == in1) ? in2 : in1;
 
-  wire is_nan_A = (E_1 == IS_NAN & |M_1);
-  wire is_nan_B = (E_2 == IS_NAN & |M_2);
-  wire is_nan = is_nan_A | is_nan_B;
+  wire is_nan_A_min = ((E_1 == IS_NAN) & (|M_1));
+  wire is_nan_B_min = ((E_2 == IS_NAN) & (|M_2));
+  wire is_nan_min_FUCKING_WORK = is_nan_A_min | is_nan_B_min;
 
-  assign out = (~is_nan) ? result_normal : ((is_nan_A) ? ((is_nan_B) ? (NAN) : (in2)) : (in1));
+  assign out = (~is_nan_min_FUCKING_WORK) ? min_normal : ((is_nan_A_min) ? ((is_nan_B_min) ? (NAN) : (in2)) : (in1));
 
 
 

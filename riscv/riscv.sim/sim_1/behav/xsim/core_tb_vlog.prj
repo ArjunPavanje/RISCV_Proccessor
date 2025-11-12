@@ -1,9 +1,11 @@
 # compile verilog/system verilog design source files
-verilog xil_defaultlib  --include "../../../../../../../Xilinx/2025.1/data/rsb/busdef" \
+verilog xil_defaultlib  --include "../../../../../../../../Xilinx/2025.1/data/rsb/busdef" \
 "../../../../riscv.gen/sources_1/ip/data_mem/sim/data_mem.v" \
-"../../../../riscv.gen/sources_1/ip/instr_mem_gen/sim/instr_mem_gen.v" \
+"../../../../riscv.ip_user_files/ip/instr_mem_gen/sim/instr_mem_gen.v" \
+"../../../../../core/fpu/FCVT_ds.v" \
 "../../../../../core/fpu/FCVT_fp.v" \
 "../../../../../core/fpu/FCVT_int.v" \
+"../../../../../core/fpu/FCVT_sd.v" \
 "../../../../../core/fpu/FPAdder.v" \
 "../../../../../core/fpu/FPDiv.v" \
 "../../../../../core/fpu/FPMax.v" \
@@ -34,6 +36,7 @@ verilog xil_defaultlib  --include "../../../../../../../Xilinx/2025.1/data/rsb/b
 "../../../../../core/fpu/fpu.v" \
 "../../../../../core/fpu/fpu_cntrl.v" \
 "../../../../../core/fpu/fsgnj.v" \
+"../../../../../core/fpu/fsgnjn.v" \
 "../../../../../core/fpu/fsgnjx.v" \
 "../../../../../core/pipeline/hazard/hdu.v" \
 "../../../../../core/pipeline/id_ex_reg.v" \

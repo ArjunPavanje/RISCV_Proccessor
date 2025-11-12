@@ -32,7 +32,8 @@ module FSGNJN #(
   assign S_1 = in1[BUS_WIDTH-1];
   assign S_2 = in2[BUS_WIDTH-1];
 
-  wire is_nan_B = (E_2 == IS_NAN & |M_2);
+  //wire is_nan_B = (E_2 == IS_NAN & |M_2);
 
-  assign out = (is_nan_B) ? (in1) : {~S_2, in1[BUS_WIDTH-2:0]};
+  //assign out = (is_nan_B) ? (in1) : {~S_2, in1[BUS_WIDTH-2:0]};
+  assign out = {~S_2, in1[BUS_WIDTH-2:0]};
 endmodule

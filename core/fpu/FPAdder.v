@@ -120,7 +120,7 @@ module FPAdder #(
   wire R = (temp_mantissa[MANTISSA_SIZE+1]) ? (G_1) : R_1;
   wire S = (temp_mantissa[MANTISSA_SIZE+1]) ? (R_1 | S_1) : S_1;
 
-  wire round_add = (add) ? ((L & G & (~R) & (~S)) | (G & (R | S))) : PAD_ZERO;
+  wire round_add = (add) ? (G & (R | S)) : PAD_ZERO;
   wire round_sub = ((G_1 == 1)) ? (~PAD_ZERO) : (PAD_ZERO);
   //wire round = (add) ? (temp_mantissa[53] ? ((G & L) ? (1'b1) : (1'b0)) : (1'b0)) : 1'b0;
 
@@ -144,7 +144,10 @@ module FPAdder #(
   wire is_inf_A = (E_A == IS_INFINITY) && ~(|M_A);
   wire is_inf_B = (E_B == IS_INFINITY) && ~(|M_B);
 
-  wire is_NaN = (S_A^S_B)&(is_inf_A & is_inf_B); // Both A, B are infinities and of opposite signs
+  wire is_nan_A = (E_A == IS_INFINITY) && (M_A);
+  wire is_nan_B = (E_B == IS_INFINITY) && (M_B);
+
+  wire is_NaN = ((S_A^S_B)&(is_inf_A & is_inf_B))|(is_nan_A|is_nan_B); // Both A, B are infinities and of opposite signs
   wire is_inf = ((is_inf_A | is_inf_B) & !is_NaN) | exp_overflow;
 
   wire [BUS_WIDTH-1:0] out_1 = {
