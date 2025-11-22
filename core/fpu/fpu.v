@@ -389,7 +389,14 @@ module fpu #(
       6'b100001: begin
         out = in1;
       end
-
+      // fmv.x.w
+      6'b101000: begin
+        out = in1;
+      end
+      // fmv.w.x
+      6'b101001: begin
+        out = in1;
+      end
       // fcvt operations
       6'b100010: begin
         out = (BUS_WIDTH == 64) ? fcvt_l_d : ZERO_32;

@@ -276,6 +276,20 @@ module fpu_cntrl #(
         fpu_rd  = 1;
         fpu_rs1 = 0;
       end
+      {  // fmv.x.w
+        5'b11100, 2'b00, 3'b000, 7'b1010011
+      } : begin
+        fpu_op  = 6'b101000;
+        fpu_rd  = 0;
+        fpu_rs1 = 1;
+      end
+      {  // fmv.w.x
+        5'b11110, 2'b00, 3'bzzz, 7'b1010011
+      } : begin
+        fpu_op  = 6'b101001;
+        fpu_rd  = 1;
+        fpu_rs1 = 0;
+      end
       {  // fcvt.l.d
         5'b11000, 2'b01, 3'bzzz, 7'b1010011
       } : begin
