@@ -37,21 +37,30 @@
 
 27. fmv.x.d    6'b100000
 28. fmv.d.x    6'b100001
+29. fmv.x.w    6'b101000
+30. fmv.w.x    6'b101001
 
 * CVT
 
-29. fcvt.l.d 6'b100010
-30. fcvt.d.l 6'b100011
-31. fcvt.s.d 6'b100100
-32. fcvt.d.s 6'b100101
-33. fcvt.s.w   6'b100110
-34. fcvt.w.s   6'b100111
+31. fcvt.l.d   6'b100010
+32. fcvt.d.l   6'b100011
+33. fcvt.s.d   6'b100100
+34. fcvt.d.s   6'b100101
+35. fcvt.s.w   6'b100110
+36. fcvt.w.s   6'b100111
+
+* Load Store
+37. fld        6'b110000
+38. flw        6'b110001
+39. fsd        6'b110010
+40. fsw        6'b110011
 
 */
 /*
 * Flags to be added
 * fpu_rd -> 1 if destination resistor is fp
 * fpu_rs1 -> 1 if input resistor 1 is rs
+* fpu_rs2 -> 1 if input resistor 2 is rs
 */
 module fpu_cntrl #(
     parameter BUS_WIDTH  = 64,
@@ -61,6 +70,7 @@ module fpu_cntrl #(
     input [INSTR_LEN-1:0] instr,
     output reg [FPU_OP_LEN-1:0] fpu_op,
     output reg fpu_rs1,
+    output reg fpu_rs2,
     output reg fpu_rd
 );
   wire [ 4:0] funct5 = instr[31:27];
@@ -77,6 +87,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000000;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fadd.s
         5'b00000, 2'b00, 3'bz, 7'b1010011
@@ -84,6 +95,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000001;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsub.d
         5'b00001, 2'b01, 3'bz, 7'b1010011
@@ -91,6 +103,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000010;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsub.s
         5'b00001, 2'b00, 3'bz, 7'b1010011
@@ -98,6 +111,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000011;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fmul.d
         5'b00010, 2'b01, 3'bz, 7'b1010011
@@ -105,6 +119,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000100;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fmul.s
         5'b00010, 2'b00, 3'bz, 7'b1010011
@@ -112,6 +127,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000101;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fdiv.d
         5'b00011, 2'b01, 3'bz, 7'b1010011
@@ -119,6 +135,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000110;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fdv.s
         5'b00011, 2'b00, 3'bz, 7'b1010011
@@ -126,6 +143,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b000111;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsqrt.d
         5'b01011, 2'b01, 3'bz, 7'b1010011
@@ -133,6 +151,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b001000;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
       {  // fsqrt.s
         5'b01011, 2'b00, 3'bz, 7'b1010011
@@ -140,6 +159,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b001001;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
 
 
@@ -149,6 +169,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010000;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fmin.s
         5'b00101, 2'b00, 3'b000, 7'b1010011
@@ -156,6 +177,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010001;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fmax.d
         5'b00101, 2'b01, 3'b001, 7'b1010011
@@ -163,6 +185,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010010;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fmax.s
         5'b00101, 2'b00, 3'b001, 7'b1010011
@@ -170,6 +193,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010011;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
 
 
@@ -179,6 +203,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010100;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fmax.s
         5'b10100, 2'b00, 3'b010, 7'b1010011
@@ -186,6 +211,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010101;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
 
       {  // flt.d
@@ -194,6 +220,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010110;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // flt.s
         5'b10100, 2'b00, 3'b001, 7'b1010011
@@ -201,6 +228,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b010111;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
 
       {  // fle.d
@@ -209,6 +237,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011000;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fle.s
         5'b10100, 2'b00, 3'b000, 7'b1010011
@@ -216,6 +245,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011001;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
 
 
@@ -225,6 +255,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011010;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsgnj.s
         5'b00100, 2'b00, 3'b000, 7'b1010011
@@ -232,6 +263,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011011;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsgnjn.d
         5'b00100, 2'b01, 3'b001, 7'b1010011
@@ -239,6 +271,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011100;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsgnj.s
         5'b00100, 2'b00, 3'b001, 7'b1010011
@@ -246,6 +279,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011101;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsgnjx.d
         5'b00100, 2'b01, 3'b010, 7'b1010011
@@ -253,6 +287,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011110;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
       {  // fsgnjs.s
         5'b00100, 2'b00, 3'b010, 7'b1010011
@@ -260,6 +295,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b011111;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 1;
       end
 
       {  // fmv.x.d
@@ -268,6 +304,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100000;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
       {  // fmv.d.x
         5'b11110, 2'b01, 3'b000, 7'b1010011
@@ -275,6 +312,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100001;
         fpu_rd  = 1;
         fpu_rs1 = 0;
+        fpu_rs2 = 0;
       end
       {  // fmv.x.w
         5'b11100, 2'b00, 3'b000, 7'b1010011
@@ -282,6 +320,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b101000;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
       {  // fmv.w.x
         5'b11110, 2'b00, 3'bzzz, 7'b1010011
@@ -289,6 +328,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b101001;
         fpu_rd  = 1;
         fpu_rs1 = 0;
+        fpu_rs2 = 0;
       end
       {  // fcvt.l.d
         5'b11000, 2'b01, 3'bzzz, 7'b1010011
@@ -296,6 +336,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100010;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
       {  // fcvt.d.l
         5'b11010, 2'b01, 3'bzzz, 7'b1010011
@@ -303,6 +344,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100011;
         fpu_rd  = 1;
         fpu_rs1 = 0;
+        fpu_rs2 = 0;
       end
 
       {  // fcvt.w.s
@@ -311,6 +353,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100110;
         fpu_rd  = 0;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
       {  // fcvt.s.w
         5'b11010, 2'b00, 3'bzzz, 7'b1010011
@@ -318,6 +361,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100111;
         fpu_rd  = 1;
         fpu_rs1 = 0;
+        fpu_rs2 = 0;
       end
       {  // fcvt.s.d
         5'b01000, 2'b00, 3'bzzz, 7'b1010011
@@ -325,6 +369,7 @@ module fpu_cntrl #(
         fpu_op  = 6'b100100;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
       {  // fcvt.d.s
         5'b01000, 2'b01, 3'bzzz, 7'b1010011
@@ -332,177 +377,46 @@ module fpu_cntrl #(
         fpu_op  = 6'b100101;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
+      end
+      {  // fld
+        5'bzzzzz, 2'bzz, 3'b011, 7'b0000111
+      } : begin
+        fpu_op  = 6'b110000;
+        fpu_rd  = 1;
+        fpu_rs1 = 0;
+        fpu_rs2 = 0;
+      end
+      {  // flw
+        5'bzzzzz, 2'bzz, 3'b010, 7'b0000111
+      } : begin
+        fpu_op  = 6'b110001;
+        fpu_rd  = 1;
+        fpu_rs1 = 0;
+        fpu_rs2 = 0;
+      end
+      {  // fsd
+        5'bzzzzz, 2'bzz, 3'b011, 7'b0100111
+      } : begin
+        fpu_op  = 6'b110010;
+        fpu_rd  = 0;
+        fpu_rs1 = 0;
+        fpu_rs2 = 1;
+      end
+      {  // fsw
+        5'bzzzzz, 2'bzz, 3'b010, 7'b0100111
+      } : begin
+        fpu_op  = 6'b110011;
+        fpu_rd  = 0;
+        fpu_rs1 = 0;
+        fpu_rs2 = 1;
       end
       default: begin
         fpu_op  = 6'b111111;
         fpu_rd  = 1;
         fpu_rs1 = 1;
+        fpu_rs2 = 0;
       end
     endcase
-
-
-
-
-    // case (diff)
-    //   14'b00000011010011: begin
-    //     fpu_op  = 6'b000000;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   14'b00001011010011: begin
-    //     fpu_op  = 6'b000001;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   14'b00010011010011: begin
-    //     fpu_op  = 6'b000010;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   14'b00011011010011: begin
-    //     fpu_op  = 6'b000011;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   14'b01011011010011: begin
-    //     fpu_op  = 6'b000100;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   14'b11000011010011: begin
-    //     fpu_op  = 6'b000101;
-    //     fpu_rd  = 0;
-    //     fpu_rs1 = 1;
-    //   end
-    //   14'b11010011010011: begin
-    //     fpu_op  = 6'b000110;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 0;
-    //   end
-    //   14'b11100011010011: begin
-    //     fpu_op  = 6'b000111;
-    //     fpu_rd  = 0;
-    //     fpu_rs1 = 1;
-    //   end  // fmv.x.d
-    //   14'b11110011010011: begin
-    //     fpu_op  = 6'b001000;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 0;
-    //   end  // fmv.d.x
-    //   14'b00000001010011: begin
-    //     fpu_op  = 6'b001001;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end  // fadd.s
-    //   14'b00001001010011: begin
-    //     fpu_op  = 6'b001010;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end  // fsub.s
-    //   14'b00010001010011: begin
-    //     fpu_op  = 6'b001011;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end  // fmul.s
-    //   14'b00011001010011: begin
-    //     fpu_op  = 6'b001100;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end  // fdiv.s
-    //   // fsqrt.s
-    //   14'b01011001010011: begin
-    //     fpu_op  = 6'b001101;
-    //     fpu_rd  = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   // fmin.s
-    //   14'b00101001010011: begin
-    //     fpu_op = 6'b001110;
-    //     fpu_rd = 1;
-    //     fpu_rs1 = 1;
-    //   end
-    //   // fmax.s
-    //   14'b
-    // endcase
   end
-  // always @(*) begin
-  //   case (diff)
-  //     14'b00000011010011: fpu_op = 6'b000000;
-  //     14'b00001011010011: fpu_op = 6'b000001;
-  //     14'b00010011010011: fpu_op = 6'b000010;
-  //     14'b00011011010011: fpu_op = 6'b000011;
-  //     14'b01011011010011: fpu_op = 6'b000100;
-  //     14'b11000011010011: fpu_op = 6'b000101;
-  //     14'b11010011010011: fpu_op = 6'b000110;
-  //     14'b11100011010011: fpu_op = 6'b000111;  // fmv.x.d
-  //     14'b11110011010011: fpu_op = 6'b001000;  // fmv.d.x
-  //     14'b00000001010011: fpu_op = 6'b001001;  //fadd.s
-  //     14'b00001001010011: fpu_op = 6'b001010;  //fsub.s
-  //     14'b00010001010011: fpu_op = 6'b001011;  //fmul.s
-  //     14'b00011001010011: fpu_op = 6'b001100;  //fdiv.s
-  //     14'b01011001010011: fpu_op = 6'b001101;  //fsqrt.s
-  //     default: fpu_op = 6'b011111;
-  //   endcase
-  // end
-  // always @(*) begin
-  //   case (fpu_op)
-  //     6'b000000: begin
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b000001: begin
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b000010: begin
-  //       fpu_rs1 = 1;
-  //       fpu_rd  = 1;
-  //     end
-  //     6'b000011: begin
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b000100: begin
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b000101: begin
-  //       fpu_rd  = 0;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b000110: begin
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 0;
-  //     end
-  //     6'b000111: begin
-  //       // fmv.x.d
-  //       fpu_rd  = 0;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b001000: begin
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 0;
-  //     end
-  //     6'b001001: begin  //fadd.s
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b001010: begin  //fsub.s
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b001011: begin  //fmul.s
-  //       fpu_rs1 = 1;
-  //       fpu_rd  = 1;
-  //     end
-  //     6'b001100: begin  //fdiv.s
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //     6'b001101: begin  //fsqrt.s
-  //       fpu_rd  = 1;
-  //       fpu_rs1 = 1;
-  //     end
-  //   endcase
-  // end
 endmodule
