@@ -27,9 +27,6 @@ lui x3, 53
 addi x3, x3, 1849
 
 # 793240123
- li x4, 0x2F47E23B
-
-# Logical 
 lui x4, 193662
 addi x4, x4, 571
 
