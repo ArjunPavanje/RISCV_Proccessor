@@ -1,0 +1,15 @@
+    .section .data
+
+# 3×3 matrix A (row-major)
+A:
+    .word 0x40133333   # 2.3
+    .word 0x3fb33333   # 1.4
+    .word 0x404ccccd   # 3.2
+
+    .word 0x3f8ccccd   # 1.1
+    .word 0x4099999a   # 4.8
+    .word 0x3f666666   # 0.9
+
+    .word 0x3f333333   # 0.7
+    .word 0x40266666   # 2.6
+    .word 0x40b00000   # 5.5
